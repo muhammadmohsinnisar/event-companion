@@ -1,0 +1,29 @@
+# Ignore Gradle build and local cache
+.gradle/
+build/
+
+# Local properties (contains machine-specific paths)
+local.properties
+
+# Mac OS
+.DS_Store
+
+# Android Studio project files (safe to ignore)
+.idea/
+*.iml
+
+# APKs and bundle outputs (built artifacts)
+*.apk
+*.ap_
+*.aab
+
+# Captures and logs
+captures/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Optional: Node modules (if you use tooling later)
+node_modules/
