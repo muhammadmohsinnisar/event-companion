@@ -4,6 +4,11 @@
 
 ---
 
+## Disclaimer
+This is a prototype demonstrating the basic structure of an Event Companion app.
+Currently it uses a mocked API for testing purposes: https://github.com/muhammadmohsinnisar/eventcompanion-mock-api.
+Future roadmap includes adding backend integration, real event QR flow, multi-event management, and user accounts.
+
 ## Features
 
 ✅ Scan event-provided QR codes to receive your ticket  
