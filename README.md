@@ -88,8 +88,7 @@ Connect a physical device or use an emulator with a working camera.
 Run the MainActivity.
 
 📂 Project Structure
-kotlin
-Copy
+```
 com.mohsin.eventcompanion
 ├── data           // Local DB, DTOs, Repositories
 ├── domain         // Models
@@ -97,6 +96,7 @@ com.mohsin.eventcompanion
 ├── utils          // QR Analyzer
 ├── MainActivity   // Navigation & Drawer
 🛡️ Permissions
+```
 The app requests:
 ```
 <uses-permission android:name="android.permission.CAMERA"/>
