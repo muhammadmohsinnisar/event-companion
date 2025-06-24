@@ -1,10 +1,12 @@
 package com.mohsin.eventcompanion
 
 import android.app.Application
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -39,6 +41,7 @@ import com.mohsin.eventcompanion.ui.event.EventViewModel
 import com.mohsin.eventcompanion.ui.event.ScannedEventsScreen
 import com.mohsin.eventcompanion.ui.list.PersistentEventListViewModel
 import com.mohsin.eventcompanion.ui.qr.TicketScannerScreen
+import com.mohsin.eventcompanion.ui.session.SessionDetailScreen
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -53,6 +56,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppDrawerNavigation() {
@@ -118,6 +122,12 @@ fun AppDrawerNavigation() {
                     )
                 }
 
+                composable("session_detail/{sessionId}") { backStackEntry ->
+                    val sessionId = backStackEntry.arguments?.getString("sessionId")?.toIntOrNull()
+                    val session = eventViewModel.getSessionById(sessionId)
+                    SessionDetailScreen(session = session, onBack = { navController.popBackStack() })
+                }
+
                 composable("event_list") {
                     val events by eventListViewModel.events.collectAsState()
                     ScannedEventsScreen(
@@ -133,7 +143,9 @@ fun AppDrawerNavigation() {
                 }
 
                 composable("event_display") {
-                    EventScreen(viewModel = eventViewModel, onSessionClick = { /* TODO */ })
+                    EventScreen(viewModel = eventViewModel, onSessionClick = { sessionId ->
+                        navController.navigate("session_detail/$sessionId")
+                    })
                 }
 
                 composable(DrawerDestination.Favorites.route) {

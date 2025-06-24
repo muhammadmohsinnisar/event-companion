@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mohsin.eventcompanion.data.repository.EventRepository
 import com.mohsin.eventcompanion.domain.model.Event
+import com.mohsin.eventcompanion.domain.model.SessionWithSpeaker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -49,5 +50,12 @@ class EventViewModel : ViewModel() {
             val updatedEvent = currentState.event.copy(sessions = updatedSessions)
             _uiState.value = EventUiState.Success(updatedEvent)
         }
+    }
+
+    fun getSessionById(sessionId: Int?): SessionWithSpeaker? {
+        val state = _uiState.value
+        return if (state is EventUiState.Success && sessionId != null) {
+            state.event.sessions.find { it.id == sessionId }
+        } else null
     }
 }
