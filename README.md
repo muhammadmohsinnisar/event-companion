@@ -1,5 +1,5 @@
 📅 Event Companion
-Event Companion is an open-source Android app designed to help users scan, save, and browse event schedules. With QR code scanning, offline storage, and a clean Jetpack Compose UI, it makes event participation smarter and easier.
+Event Companion is an open-source Android app designed to help users scan, save, and browse event schedules. With QR code scanning, offline storage, and a clean Jetpack Compose UI, it makes event participation smarter and easier. The backend for this app can be found here https://github.com/muhammadmohsinnisar/ktor-event-companion
 
 ✨ Features
 📷 QR Code Scanner
